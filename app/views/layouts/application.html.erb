@@ -1,29 +1,58 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Forum</title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <title>Application</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tag %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div id="container">
-      <div id="user_nav">
-      <% if current_user %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to "Edit Profile", edit_user_path("current") %> |
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Sign Up", signup_path %> or
-        <%= link_to "Log In", login_path %>
-      <% end %>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          
+          <a class="brand" href="#">Application</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Presets", "/presets" %></li>
+              <li><%= link_to "Songs" , "/songs"%></li>
+              <li><%= link_to "People" , "/users" %></li>
+            </ul>
+          </div>
+
+          <div class="nav pull-right user-login-panel">
+            <% if current_user %>
+              Logged in as <strong><%= current_user.email %></strong>.
+              <%= link_to "Edit Profile", edit_user_path("current") %> |
+              <%= link_to "Log Out", logout_path %>
+            <% else %>
+              <%= link_to "Sign Up", signup_path %> or
+              <%= link_to "Log In", login_path %>
+            <% end %>
+          </div>
+        </div>
       </div>
+    </div>
 
+    <div class="container">
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <%= msg %>
+        </div>
       <% end %>
 
-      <%= yield %>
+      <div class="row">
+        <div class="span9"><%= yield %></div>
+        <div class="span3">
+          <%= yield :sidebar %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

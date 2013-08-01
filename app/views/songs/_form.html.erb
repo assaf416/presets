@@ -1,0 +1,19 @@
+<%= simple_form_for(@song) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id %>
+    <%= f.input :name %>
+    <%= f.input :performer %>
+    <%= f.input :sounds_like %>
+    <%= f.input :lyrics %>
+    <%= f.input :guitar_tab %>
+    <%= f.input :bass_tabs %>
+    <%= f.input :youtube_url %>
+    <%= f.input :midi_file_url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

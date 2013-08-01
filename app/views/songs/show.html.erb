@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @song.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @song.name %>
+</p>
+
+<p>
+  <b>Performer:</b>
+  <%= @song.performer %>
+</p>
+
+<p>
+  <b>Sounds like:</b>
+  <%= @song.sounds_like %>
+</p>
+
+<p>
+  <b>Lyrics:</b>
+  <%= @song.lyrics %>
+</p>
+
+<p>
+  <b>Guitar tab:</b>
+  <%= @song.guitar_tab %>
+</p>
+
+<p>
+  <b>Bass tabs:</b>
+  <%= @song.bass_tabs %>
+</p>
+
+<p>
+  <b>Youtube url:</b>
+  <%= @song.youtube_url %>
+</p>
+
+<p>
+  <b>Midi file url:</b>
+  <%= @song.midi_file_url %>
+</p>
+
+<hr/>
+<%= link_to "Audition" , ""  , :class => "btn btn-success" %>
+<%= link_to "Play" , ""  , :class => "btn btn-success" %>
+<%= link_to "Add to Library" , ""  , :class => "btn btn-success" %>
+<%= link_to 'Edit', edit_song_path(@song) , :class => "btn" %> |
+<%= link_to 'Back', songs_path , :class => "btn" %>
+
+
+
+<% content_for :sidebar do  %>
+  <h5> Recommended Songs </h5>
+  <%= render 'shared/fake_song_list'%>
+<% end %>
