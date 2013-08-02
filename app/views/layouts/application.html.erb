@@ -1,8 +1,8 @@
-
+<% current_user = User.find(3) %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Application</title>
+    <title>Presets!</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
@@ -15,8 +15,8 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          
-          <a class="brand" href="#">Application</a>
+
+          <a class="brand" href="#">Presets!</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li><%= link_to "Presets", "/presets" %></li>
@@ -26,10 +26,23 @@
           </div>
 
           <div class="nav pull-right user-login-panel">
-            <% if current_user %>
-              Logged in as <strong><%= current_user.email %></strong>.
-              <%= link_to "Edit Profile", edit_user_path("current") %> |
-              <%= link_to "Log Out", logout_path %>
+            <%  if current_user %>
+
+
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-header">Dropdown header</li>
+                <li class=""> item one</li>
+                <li class=""> item two</li>
+                <li class="divider"></li>
+                <li class=""> item three</li>
+                <li class=""> item four</li>
+                <li class="dropdown-header">Dropdown header</li>
+              </ul>
+
+
+  <%#*Logged in as <strong><%= current_user.email %></strong>.%>
+  <%#= link_to "Edit Profile", edit_user_path(3) %> |
+  <%#= link_to "Log Out", logout_path %>
             <% else %>
               <%= link_to "Sign Up", signup_path %> or
               <%= link_to "Log In", login_path %>

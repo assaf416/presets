@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801012152) do
+ActiveRecord::Schema.define(:version => 20130802190818) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "rate"
+    t.integer  "posted_by_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["posted_by_id"], :name => "index_comments_on_posted_by_id"
 
   create_table "instruments", :force => true do |t|
     t.string   "name"

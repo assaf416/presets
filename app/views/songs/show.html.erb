@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @song.user_id %>
-</p>
 
 <p>
   <b>Name:</b>
@@ -49,12 +45,17 @@
 <%= link_to "Audition" , ""  , :class => "btn btn-success" %>
 <%= link_to "Play" , ""  , :class => "btn btn-success" %>
 <%= link_to "Add to Library" , ""  , :class => "btn btn-success" %>
-<%= link_to 'Edit', edit_song_path(@song) , :class => "btn" %> |
+<%= link_to 'Edit', edit_song_path(@song) , :class => "btn" %> 
 <%= link_to 'Back', songs_path , :class => "btn" %>
 
 
 
 <% content_for :sidebar do  %>
+
+  <%= render "comments/comments" %>
+  <%= render "comments/form" %>
+
+
   <h5> Recommended Songs </h5>
-  <%= render 'shared/fake_song_list'%>
+  <%= render 'shared/fake_song_list_sidebar'%>
 <% end %>

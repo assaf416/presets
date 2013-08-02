@@ -42,6 +42,11 @@
 
 
 <% content_for :sidebar do  %>
+
+<%= render "comments/comments" %>
+<%= render "comments/form" %>
+
+
   <h5> Recommended Presets </h5>
-  <%= render 'shared/fake_presets_list'%>
+  <%= render 'shared/fake_presets_list_sidebar'%>
 <% end %>

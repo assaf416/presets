@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :topics
   has_many :presets
+  has_many :songs
+  has_many :comments
 
   default_scope { where(tenant_id: Tenant.current_id) }
 end

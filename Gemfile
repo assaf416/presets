@@ -35,7 +35,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
@@ -47,6 +47,8 @@ group :test do
   gem 'launchy'
   gem 'guard-rspec'
   gem 'rb-fsevent'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'simple_form'

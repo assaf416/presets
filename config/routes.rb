@@ -1,9 +1,24 @@
 Forum::Application.routes.draw do
-  resources :songs
+  get "comments/index"
 
-  resources :instruments
+  get "comments/new"
 
-  resources :presets
+  get "public/welcome"
+
+  get "public/register"
+
+  resources :songs do
+    resources :comments
+  end
+
+  resources :instruments do
+    resources :comments
+  end
+
+  resources :presets do
+    resources :comments
+  end
+  
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
@@ -14,5 +29,6 @@ Forum::Application.routes.draw do
   resources :posts
   resources :users
 
-  root to: 'topics#index'
+  root to: 'public#welcome'
+  
 end
