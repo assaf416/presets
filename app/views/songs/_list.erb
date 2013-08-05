@@ -1,0 +1,23 @@
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Performer</th>
+    <th>Lyrics</th>
+    <th>Guitar</th>
+    <th>Bass</th>
+    <th>Youtube</th>
+  </tr>
+
+<% @songs.each do |song| %>
+  <tr>
+    <td><%= song.user_id %></td>
+    <td><%= link_to song.name , song_path(song) %></td>
+    <td><%= song.performer %></td>
+    <td><%= song.lyrics %></td>
+    <td><%= song.guitar_tab %></td>
+    <td><%= song.bass_tabs %></td>
+    <td><%= song.youtube_url %></td>
+  </tr>
+<% end %>
+</table>

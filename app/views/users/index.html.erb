@@ -1,18 +1,12 @@
 <h1>Listing users</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Email</th>
-    <th>Subdomain</th>
-    <th>Picture url</th>
     <th>Plays intruments</th>
     <th>Liked generes</th>
     <th>Location</th>
-    <th>Sounds like</th>
-    <th>Password digest</th>
-    <th>Admin</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -21,16 +15,10 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= user.subdomain %></td>
-    <td><%= user.picture_url %></td>
     <td><%= user.plays_intruments %></td>
     <td><%= user.liked_generes %></td>
     <td><%= user.location %></td>
-    <td><%= user.sounds_like %></td>
-    <td><%= user.password_digest %></td>
-    <td><%= user.admin %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

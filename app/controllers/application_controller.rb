@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  around_filter :scope_current_tenant
+#  around_filter :scope_current_tenant
 
 private
 
@@ -11,12 +11,13 @@ private
   helper_method :current_user
   
   def current_tenant
-    Tenant.find_by_subdomain! request.subdomain
+    User.find_by_subdomain! request.subdomain
   end
   helper_method :current_tenant
   
   def scope_current_tenant
-    Tenant.current_id = current_tenant.id
+    Tenant.current_id = current_user.id
+    current_user.id
     yield
   ensure
     Tenant.current_id = nil

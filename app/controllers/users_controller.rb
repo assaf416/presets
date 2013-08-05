@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  
+  def home_page
+    
+  end
+  def news
+    
+  end
+  
   def index
     @users = User.all
 
@@ -14,7 +22,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    @presets = @user.presets
+    @songs = @user.songs
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

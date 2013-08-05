@@ -2,7 +2,12 @@ class PresetsController < ApplicationController
   # GET /presets
   # GET /presets.json
   def index
-    @presets = Preset.all
+    if params[:user_id].present?
+      @presets = User.find(params[:user_id]).presets :include => :comments
+    else
+      @presets = Preset.all :include => :comments
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +49,7 @@ class PresetsController < ApplicationController
   # POST /presets.json
   def create
     @preset = Preset.new(params[:preset])
-
+    @preset.user_id = current_user.id
     respond_to do |format|
       if @preset.save
         format.html { redirect_to @preset, notice: 'Preset was successfully created.' }
@@ -60,7 +65,7 @@ class PresetsController < ApplicationController
   # PUT /presets/1.json
   def update
     @preset = Preset.find(params[:id])
-
+    @preset.user_id = current_user.id
     respond_to do |format|
       if @preset.update_attributes(params[:preset])
         format.html { redirect_to @preset, notice: 'Preset was successfully updated.' }

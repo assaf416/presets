@@ -19,7 +19,9 @@ Forum::Application.routes.draw do
     resources :comments
   end
   
-
+  
+  get 'users/home_page'
+  get 'users/news'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -27,8 +29,16 @@ Forum::Application.routes.draw do
   resources :sessions
   resources :topics
   resources :posts
-  resources :users
+  resources :users do 
+    get "users/:id/home_page"
+    get "users/:id/news"
+    resources :presets
+    resources :songs
+    resources :messages
+  end
 
+  get 'users/home_page', :to => "userss#home_page"
+  get 'users/news', :to => "userss#news"
   root to: 'public#welcome'
   
 end

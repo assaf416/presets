@@ -53,10 +53,10 @@
 
 <hr/>
 <h4> <%= @user.name %> Presets </h4>
-<%= render 'shared/fake_presets_list'%>
+<%= render '/presets/list'  %>
 <hr/>
 <h4> <%= @user.name %> Songs </h4>
-<%= render 'shared/fake_song_list'%>
+<%= render '/songs/list'%>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
